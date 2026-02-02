@@ -1,21 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { StatusBar } from "@/components/StatusBar";
-
-const WEEKDAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
-const DATES = [
-  { day: "Dom", date: "01" },
-  { day: "Seg", date: "02" },
-  { day: "Ter", date: "03" },
-  { day: "Qua", date: "04" },
-  { day: "Qui", date: "05" },
-  { day: "Sex", date: "06" },
-  { day: "Sáb", date: "07" },
-];
-
-const TIMES = ["09.00", "10.00", "11.00", "12.00", "13.00", "14.00"];
 
 const UNITS = [
   {
@@ -39,9 +25,6 @@ const UNITS = [
 ];
 
 export default function HomePage() {
-  const [selectedDate, setSelectedDate] = useState("03");
-  const [selectedTime, setSelectedTime] = useState("11.00");
-
   return (
     <div className="relative flex h-screen flex-col overflow-hidden bg-black">
       {/* Luz amarela no topo (igual checkout) */}
@@ -134,58 +117,6 @@ export default function HomePage() {
           </button>
         </div>
       </header>
-
-      <section className="px-4 space-y-4">
-        <div>
-          <h2 className="mb-3 text-lg font-bold text-white">Fevereiro</h2>
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-            {DATES.map((d) => (
-              <button
-                key={d.date}
-                type="button"
-                onClick={() => setSelectedDate(d.date)}
-                className={`flex shrink-0 flex-col items-center px-4 py-3 transition ${
-                  selectedDate === d.date
-                    ? "rounded-xl bg-[#FDBA4E] text-[#1a1a1a]"
-                    : "glass-chip text-white"
-                }`}
-              >
-                <span className="text-xs font-medium">{d.day}</span>
-                <span className="text-base font-semibold">{d.date}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <h2 className="mb-3 text-lg font-bold text-white">Horários disponíveis</h2>
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-            {TIMES.map((t) => (
-              <button
-                key={t}
-                type="button"
-                onClick={() => setSelectedTime(t)}
-                className={`shrink-0 px-4 py-3 text-sm font-medium transition ${
-                  selectedTime === t
-                    ? "rounded-xl bg-[#FDBA4E] text-[#1a1a1a]"
-                    : "glass-chip text-white"
-                }`}
-              >
-                {t}
-              </button>
-            ))}
-            <button
-              type="button"
-              className="glass-chip flex shrink-0 items-center px-3 py-3 text-white/70"
-              aria-label="Mais horários"
-            >
-              <svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </section>
 
       <section className="mt-6 flex-1 px-4">
         <h2 className="mb-4 text-lg font-bold text-white">Nossas Unidades</h2>
